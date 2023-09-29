@@ -12,5 +12,4 @@ public class PoligonalModel {
 
         this.poligons = new ArrayList<Poligon>();
     }
-
 }
