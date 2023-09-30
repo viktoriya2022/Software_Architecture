@@ -4,16 +4,50 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class Scene {
-
     public int id;
-    public List<PoligonalModel> models;
-    public List<Flash> flashes;
+    public List<PoligonalModel> Models;
+    public List<Flash> Flashes;
+    public List<Camera> Cameras;
 
-    public Type method1(Type type) {
-        return type.getClass();
+    public Scene(int id, List<PoligonalModel> models, List<Flash> flashes, List<Camera> cameras) throws Exception {
+        this.id = id;
+
+        if (models.size() > 0) {
+            this.Models = models;
+        } else {
+            throw new Exception("Должна быть одна модель");
+        }
+
+        Flashes = flashes;
+
+        if (cameras.size() > 0) {
+            this.Cameras = cameras;
+        } else {
+            throw new Exception("Должна быть одна камера");
+        }
     }
 
-    public Type method2(Type type) {
-        return type.getClass();
+    /* дженерики */
+
+    public <T> T method1(T flash) {
+        return flash;
     }
+
+    public <T, E> T method2(T Model, E Flash) {
+        return Model;
+    }
+
+    // /**
+    // * заглушка
+    // */
+    // public Type1 method1(Type1 t) {
+    // return t;
+    // }
+
+    // /**
+    // * заглушка
+    // */
+    // public Type1 method1(Type1 t1, Type2 t2) {
+    // return t1;
+    // }
 }
