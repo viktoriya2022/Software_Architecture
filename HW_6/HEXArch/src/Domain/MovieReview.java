@@ -10,9 +10,10 @@ public class MovieReview {
         this.movieScore = v;
         this.remark = excellent;
     }
+    // метод выводит на печать инфо из бд
 
     @Override
     public String toString() {
-        return  " " +movieScore +" "+ remark;
+        return " " + movieScore + " " + remark;
     }
 }

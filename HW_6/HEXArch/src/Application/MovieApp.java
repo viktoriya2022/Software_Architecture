@@ -15,6 +15,7 @@ public class MovieApp {
     private iPrintMovieReviews printMovieReviews;
     private static Random rand = new Random();
 
+    // подключение к портам внешних адаптеров MovieReviewsRepo и ConsolePrinter
     public MovieApp(iFetchMovieReviews fetchMovieReviews, iPrintMovieReviews printMovieReviews) {
         this.fetchMovieReviews = fetchMovieReviews;
         this.printMovieReviews = printMovieReviews;
@@ -39,8 +40,11 @@ public class MovieApp {
     }
 
     public void accept(MovieSearchRequest movieSearchRequest) {
+        // получаем через fetchMovieReviews список отзывов
         List<MovieReview> movieReviewList = fetchMovieReviews.fetchMovieReviews(movieSearchRequest);
+        // методом filterRandomReviews фильтруем полученные отзывы
         List<MovieReview> randomReviews = filterRandomReviews(new ArrayList<>(movieReviewList));
+        // отфильтрованный список отправляем на печать
         printMovieReviews.writeMovieReviews(randomReviews);
     }
 }

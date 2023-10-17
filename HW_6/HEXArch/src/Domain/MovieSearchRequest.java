@@ -1,5 +1,6 @@
 package Domain;
 
+//класс - запрос на фильм для оценки
 public class MovieSearchRequest {
     String request;
 
